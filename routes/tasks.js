@@ -448,7 +448,7 @@ router.post('/write', function(req, res){
         //============================premium per year====================================================//
     
         var val68 = (Number(val60)+Number(val61)+Number(val62)+Number(val63)+Number(val64)+Number(val65)+Number(val66)+Number(val67)).toFixed(2);
-        console.log(val68);
+        console.log("val = ",val68);
         
         
     
@@ -510,25 +510,42 @@ router.post('/write', function(req, res){
     var Accidental_Death_Benefit = (sal*12*2)+val70;
         console.log(Accidental_Death_Benefit);
         
-    var val71 = worksheet.getCell('I4').value;
+    //var val71 = worksheet.getCell('I4').value;
+    var val71 = sal*12;
     var Total_and_Permanent_Disability = val71;
         console.log(Total_and_Permanent_Disability);
         
-    var val72 = worksheet.getCell('I5').value;
-    var Partial_and_Permanent_Disability = val72;
+    //var val722 = worksheet.getCell('I5').value;
+    var val722 = sal*12;
+    var Partial_and_Permanent_Disability = val722;
         console.log(Partial_and_Permanent_Disability);
         
-    var val72 = worksheet.getCell('I6').value;
+    //var val72 = worksheet.getCell('I6').value;
+    var val72 = (sal*12)*(0.5);
+    
+    var new_critical_ill;
+        if(val72 > 3000000){
+            new_critical_ill = 3000000;
+        }else{
+            new_critical_ill = val72;
+        }
     var Critical_Illness = val72;
-        console.log(Critical_Illness);
+        console.log("ill = ",Critical_Illness);
         
     var val73 = worksheet.getCell('I7').value;
     var Hospitalization_Benefit = val73;
         console.log(Hospitalization_Benefit);
         
     var val74 = sal*12*2*(0.1);
-    var Funeral_Expenses = val74;
-        console.log(Funeral_Expenses);
+    var new_funeral_ex;
+    console.log("fe = ",val74);
+        if(val74 > 500000){
+            new_funeral_ex = 500000;
+        }else{
+            new_funeral_ex = val74;
+        }
+    var Funeral_Expenses = new_funeral_ex;
+        console.log("fe = ",Funeral_Expenses);
         
     if(age<18 || age>65)
     {
